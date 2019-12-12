@@ -7,47 +7,40 @@
 #include <iostream>
 #include <array>
 
+
 template<size_t N>
-int Calculate(std::array<int, N> arrayOfNumbers) {
-    // This function finds the largest number from random list
-
-    // Variables and arrays
-    int numbers = "Please input a number: "
-
+std::array<std::string, 5> DigitMaker(std::array<std::string, 5> inputList) {
+    // Creating the variables
+    std::array<std::string, 5> result;
+    int numCounter = 0;
     // Process
-    for (int repeater = 0; repeater < 10; repeater++) {
-        if (arrayOfNumbers[repeater] > largestArrayNumber) {
-            largestArrayNumber = arrayOfNumbers[repeater];
-        }
+    for (std::string counter : inputList) {
+        result[numCounter] = counter;
+        numCounter++;
     }
-
-    // Output
-    return largestArrayNumber;
+    return result;
 }
 
-int main() {
-    // This function creates an array and shows the numbers
-
-    // Random number seed
-    unsigned int seed = time(NULL);
-
-    // Variables and arrays
-    int randomNumber;
-    int largestNumber;
-    std::array<int, 10> numberArray;
-
-    // Adding numbers to an array
-    for (int repeater = 0; repeater < 10; repeater++) {
-        randomNumber = rand_r(&seed) % 100;
-        std::cout << "Random Number " << repeater << " is: " << randomNumber
-                  << std::endl;
-        numberArray[repeater] = randomNumber;
-    }
+main() {
+    // This function checks if the entered number is the same as random number
+    int digit = 0;
+    std::string digitStr = "";
+    std::array<std::string, 5> inputList;
+    std::array<std::string, 5> result;
 
     // Process
-    largestNumber = Calculate(numberArray);
-
-    // Output
-    std::cout << "The largest number is: " \
-              << largestNumber << std::endl;
+    std::cout << "enter a number: ";
+    std::cin >> digitStr;
+    for (int counter = 0; counter < 5; counter++) {
+        inputList[counter] = digitStr[counter];
+    }
+    // Pass the input to another function
+    result = DigitMaker(inputList);
+    
+    std::cout << "[";
+    for (std::string number : result) {
+        // Output
+        std::cout << number << + ", ";
+    }
+    std::cout << "]" << std::endl;
 }

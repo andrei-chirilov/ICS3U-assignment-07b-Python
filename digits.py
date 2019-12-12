@@ -4,25 +4,30 @@
 # Created on: December 2019
 # This program get's number from user then turns it into a list of it's digits
 
-import random
+
+def digit_maker(numbers_list):
+    res = []
+    for x in numbers_list:
+        res.append(int(x))
+    return res
 
 
 def main():
     # This function puts a number into a list of digits
+    numbers_list = []
 
     # input
     numbers = input("enter a number: ")
-    while (not numbers.isdigit()):
+    while not numbers.isdigit():
         print("Please enter a valid number")
         numbers = input("enter a number: ")
+        numbers_list.append(numbers)
 
-    # process
-    res = []
-    for x in numbers:
-        res.append(int(x))
+    # pass into the other function
+    result = digit_maker(numbers)
 
     # output
-    print(res)
+    print(result)
 
 
 if __name__ == "__main__":
